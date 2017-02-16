@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   mount_uploader :image, UserImageUploader     
   
   # バリデーションを設定
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true, length: { minimum: 8 } 
   validates :image, presence: true
   validates :profile, presence: true
          
