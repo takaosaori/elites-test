@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
          
   mount_uploader :image, UserImageUploader     
   
+  has_many :tweets
+  
   # バリデーションを設定
   validates :name, presence: true, uniqueness: true, length: { minimum: 8 } 
   validates :image, presence: true
