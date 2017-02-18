@@ -1,8 +1,10 @@
 class TweetsController < ApplicationController
     
     def index
+      @q = Tweet.includes(:user).order(created_at: :desc).ransack(params[:q])
+      @tweet = @q.result.page(params[:page]).per(10)
       @input_content = Tweet.new
-      @tweet = Tweet.includes(:user).order('updated_at DESC')
+    #   @tweet = Tweet.includes(:user).order('updated_at DESC').page(params[:page]).per(10)
     end
    
     def create
