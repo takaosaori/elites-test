@@ -26,24 +26,24 @@ class TweetsController < ApplicationController
     end
     
     def edit
-      @input_content = Tweet.find(params[:id])
+      @tweet = Tweet.find(params[:id])
     end
     
     def update
-     @input_content = Tweet.find(params[:id])
+     @tweet = Tweet.find(params[:id])
     #  tweet = Tweet.find(params[:id])
-     @input_content.attributes = tweet_params
-       if @input_content.valid? # バリデーションチェック
-         @input_content.save!
+     @tweet.attributes = tweet_params
+       if @tweet.valid? # バリデーションチェック
+          @tweet.save!
        else
-         flash[:alert] = @input_content.errors.full_messages
+         flash[:alert] = @tweet.errors.full_messages
        end
        redirect_to action: :show
     end
     
     def destroy
-      @input_content = Tweet.find(params[:id])
-      @input_content.destroy
+      @tweet = Tweet.find(params[:id])
+      @tweet.destroy
       redirect_to action: :index
     end
 

@@ -1,7 +1,7 @@
 <div class="wrapper tweet_wrapper">
 
   <div class="input">
-    <%= form_for @input_content do |f| %>
+    <%= form_for @tweet do |f| %>
       <div class="form-group">
         <%= f.text_area :content, placeholder: "本文は140字以内で投稿", class: 'form-control', rows: 3 %>
       </div>
@@ -15,10 +15,11 @@
         </div>          
         <div class="post">
           <%= f.submit '更新', class: 'btn btn-primary' %>
-          <%= button_to '削除', tweet_path(f), method: :delete, class: 'btn btn-danger', data: {confirm: '削除してよろしいですか？'}  %>
         </div>
       </div>
     <% end %>
   </div>
-  
 </div>  
+<div class="del">
+  <%= button_to '削除', tweet_path(@tweet), method: :delete, class: 'btn btn-danger', data: {confirm: '削除してよろしいですか？'}  %>
+</div>
