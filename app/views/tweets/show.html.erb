@@ -8,10 +8,16 @@
         <p class="content">
           <%= @tweet.user.name %>
           <%= link_to tweet_path(@tweet.id) do %><%= @tweet.created_at %><% end %>
-          <br><% if mypost?(@tweet) %><%= link_to edit_tweet_path(@tweet.id) do %><%= @tweet.content %><% end %>
+          <br>
+          <% if mypost?(@tweet) %>
+            <%= link_to edit_tweet_path(@tweet.id) do %>
+              <%= @tweet.content %>
+            <% end %>
+           <% else %>
+            <%= @tweet.content %>
+          <% end %>
         </p>
       </div>
-      <% end %> 
   </div> 
 
 </div>

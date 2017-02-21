@@ -30,7 +30,14 @@
         <p class="content">
           <%= t.user.name %>
           <%= link_to tweet_path(t.id) do %><%= t.created_at %><% end %>
-          <br><% if mypost?(t) %><%= link_to edit_tweet_path(t.id) do %><%= t.content %><% end %><% end %>
+          <br>
+          <% if mypost?(t) %>
+            <%= link_to edit_tweet_path(t.id) do %>
+              <%= t.content %>
+            <% end %>
+           <% else %>
+            <%= t.content %>
+          <% end %>
         </p>
       </div>
     <% end %>

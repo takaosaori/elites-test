@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :tweets
   
   # バリデーションを設定
-  validates :name, presence: true, uniqueness: true, length: { minimum: 8 } 
+  validates :name, presence: true, uniqueness: true, length: { minimum: 2 } 
   validates :image, presence: true
   validates :profile, presence: true
          

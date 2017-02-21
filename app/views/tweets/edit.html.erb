@@ -1,5 +1,4 @@
 <div class="wrapper tweet_wrapper">
-
   <div class="input">
     <%= form_for @tweet do |f| %>
       <div class="form-group">
@@ -20,6 +19,7 @@
     <% end %>
   </div>
 </div>  
+
 <div class="del">
   <%= button_to '削除', tweet_path(@tweet), method: :delete, class: 'btn btn-danger', data: {confirm: '削除してよろしいですか？'}  %>
 </div>
