@@ -2,7 +2,7 @@
 
   <!-- メッセージ入力 -->
   <div class="input">
-    <%= form_for @input_content do |f| %>
+    <%= form_for @input_tweet do |f| %>
       <div class="form-group">
         <%= f.text_area :content, placeholder: "本文は140字以内で投稿", class: 'form-control', rows: 3 %>
       </div>

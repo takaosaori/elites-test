@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
     
     def index
-      @input_content = Tweet.new
+      @input_tweet = Tweet.new
     #   @tweet = Tweet.includes(:user).order('updated_at DESC').page(params[:page]).per(10)
     
     #   @q = Post.order(created_at: :desc).ransack(params[:q])
@@ -19,10 +19,12 @@ class TweetsController < ApplicationController
       tweet.user_id = current_user.id
       if tweet.valid? # バリデーションチェック
         tweet.save!
+        redirect_to action: :index
       else
+        @input_tweet = Tweet.new(tweet_params)
         flash[:alert] = tweet.errors.full_messages
+        render action: :index
       end
-      redirect_to action: :index
     end
     
     def edit
