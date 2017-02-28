@@ -1,0 +1,40 @@
+<div class="wrapper">
+
+  <div class="user">
+        <p class="icon">
+            <%= image_tag @user.image.url %>
+        </p>
+        <p class="content">
+          【ユーザーネーム】:<%= @user.name %>
+          <br>
+          【最終ログイン】:<%= @user.last_sign_in_at %>
+          <br>
+          【プロフィール】:<%= @user.profile %>
+        </p>
+  </div> 
+  
+  <div class="user_tweet">
+    <% @user.tweets.each do |t| %>
+      <div class="per <%= 'mine' if t.user.id == current_user.id %>">
+        <p class="icon">
+            <%= image_tag t.user.image.url %>
+        </p>
+        <p class="content">
+          <%= link_to user_path(t.user.id) do %><%= t.user.name %><% end %>
+          <%= link_to tweet_path(t.id) do %><%= t.created_at %><% end %>
+          <br>
+          <% if mypost?(t) %>
+            <%= link_to edit_tweet_path(t.id) do %>
+              <%= t.content %>
+            <% end %>
+           <% else %>
+            <%= t.content %>
+          <% end %>
+        </p>
+      </div>
+    <% end %>
+    
+    <%= paginate @tweet %>
+  </div>    
+
+</div>

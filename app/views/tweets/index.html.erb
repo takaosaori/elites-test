@@ -28,7 +28,7 @@
             <%= image_tag t.user.image.url %>
         </p>
         <p class="content">
-          <%= t.user.name %>
+          <%= link_to user_path(t.user.id) do %><%= t.user.name %><% end %>
           <%= link_to tweet_path(t.id) do %><%= t.created_at %><% end %>
           <br>
           <% if mypost?(t) %>
