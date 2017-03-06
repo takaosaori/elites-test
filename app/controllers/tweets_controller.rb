@@ -2,11 +2,6 @@ class TweetsController < ApplicationController
     
     def index
       @input_tweet = Tweet.new
-    #   @tweet = Tweet.includes(:user).order('updated_at DESC').page(params[:page]).per(10)
-    
-    #   @q = Post.order(created_at: :desc).ransack(params[:q])
-    #   @posts = @q.result.page(params[:page]).per(10)
-      
     end
     
     def show
@@ -37,10 +32,11 @@ class TweetsController < ApplicationController
      @tweet.attributes = tweet_params
        if @tweet.valid? # バリデーションチェック
           @tweet.save!
+          redirect_to action: :show
        else
          flash[:alert] = @tweet.errors.full_messages
+         render action: :show
        end
-       redirect_to action: :show
     end
     
     def destroy

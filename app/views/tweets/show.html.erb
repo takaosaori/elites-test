@@ -1,5 +1,13 @@
 <div class="wrapper tweet_wrapper">
 
+  <div class="alert">
+    <% if flash[:alert] %>
+      <% flash[:alert].each do |message| %>
+        <p class="alert"><%= message %></p>
+      <% end %>
+    <% end %>
+  </div>  
+
   <div class="tweet">
       <div class="per <%= 'mine' if @tweet.user.id == current_user.id %>">
         <p class="icon">
